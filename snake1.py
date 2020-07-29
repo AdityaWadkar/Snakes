@@ -145,7 +145,9 @@ def instruction():
         text_screen("N Button - play next song", light_green, 50, 100)
         text_screen("Enter Button = Start the game!!", light_green, 50, 120)
         text_screen("space Button = Pause and Unpause the game!!", light_green, 50, 140)
-        text_screen("Escape Button = Start the game!!", light_green, 50, 160)
+        text_screen("Escape Button = Exit the game!!", light_green, 50, 160)
+        text_screen("C Button = Continue the game!!", light_green, 50, 180)
+        text_screen("R Button = Rules of the game!!", light_green, 50,200)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit_game = True
