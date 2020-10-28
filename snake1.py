@@ -90,7 +90,7 @@ def button(msg,x,y,w,h,ic,ac,action = None):
         pygame.draw.rect(gameWindow, ac,(x,y,w,h))
         if click[0] == 1 and action != None:
             pygame.mixer.music.load("back.mp3")
-            pygame.mixer.music.play()
+            pygame.mixer.music.play(-1)
             action()
     else:
         pygame.draw.rect(gameWindow, ic,(x,y,w,h))
@@ -100,11 +100,11 @@ def button(msg,x,y,w,h,ic,ac,action = None):
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     gameWindow.blit(textSurf, textRect)
 
-#PAuse Function
+#Pause Function
 
 def paused():
     pygame.mixer.music.load("first.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
     while pause:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -114,7 +114,7 @@ def paused():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_c or pygame.K_SPACE:
                     pygame.mixer.music.load("back.mp3")
-                    pygame.mixer.music.play()
+                    pygame.mixer.music.play(-1)
                     unpause()
                 if event.key == pygame.K_ESCAPE:
                     quitgame()
@@ -137,7 +137,7 @@ def unpause():
 
 def instruction():
     pygame.mixer.music.load("first.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
     exit_game = False
     while not exit_game:
 
@@ -164,16 +164,17 @@ def instruction():
                     quit()
                 if event.key == pygame.K_RETURN:
                     pygame.mixer.music.load("back.mp3")
-                    pygame.mixer.music.play()
+                    pygame.mixer.music.play(-1)
                     gameloop()
         button("START", 200, 300, 120, 35, green, light_green, gameloop)
+        # button("MainMenu", screen_width - 550, 350, 120, 35, red, light_red, welcome)
         pygame.display.update()
         clock.tick(60)
 
 # Starting Screen
 def welcome():
     pygame.mixer.music.load("first.mp3")
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
     exit_game =False
     while not exit_game:
 
@@ -193,7 +194,7 @@ def welcome():
                     quit()
                 if event.key == pygame.K_RETURN:
                     pygame.mixer.music.load("back.mp3")
-                    pygame.mixer.music.play()
+                    pygame.mixer.music.play(-1)
                     gameloop()
                 if event.key == pygame.K_r:
                     instruction()
@@ -203,8 +204,6 @@ def welcome():
 
         pygame.display.update()
         clock.tick(60)
-
-
 # Main Game Loop
 def gameloop():
 
@@ -227,9 +226,10 @@ def gameloop():
     with open("highscore.txt", "r") as f:
         highscore = f.read()
 
-    food_x = random.randint(20, screen_width / 2)
-    food_y = random.randint(20, screen_height / 2)
-    food_size = 8
+    food_x = random.randint(20, screen_width - 20)
+    food_y = random.randint(20, screen_height - 20)
+
+    food_size = 10
     score = 0
     init_velocity = 4
     snake_size = 12
@@ -253,11 +253,11 @@ def gameloop():
                     if event.key == pygame.K_RETURN:
                         if cnt%2==0:
                             pygame.mixer.music.load("song.mp3")
-                            pygame.mixer.music.play()
+                            pygame.mixer.music.play(-1)
                             cnt=cnt+1
                         else:
                             pygame.mixer.music.load("back.mp3")
-                            pygame.mixer.music.play()
+                            pygame.mixer.music.play(-1)
                             cnt = cnt + 1
                         gameloop()
 
@@ -298,47 +298,49 @@ def gameloop():
 
 
                     if event.key ==pygame.K_n:
+
                         songcnt = random.randint(1, 10)
-                        if songcnt == 1:
-                            pygame.mixer.music.load("song1.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 2:
-                            pygame.mixer.music.load("song2.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 3:
-                            pygame.mixer.music.load("song3.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 4:
-                            pygame.mixer.music.load("song4.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 5:
-                            pygame.mixer.music.load("song5.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 6:
-                            pygame.mixer.music.load("song6.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 7:
-                            pygame.mixer.music.load("song7.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 8:
-                            pygame.mixer.music.load("song8.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 9:
-                            pygame.mixer.music.load("song9.mp3")
-                            pygame.mixer.music.play()
-                        if songcnt == 10:
-                            pygame.mixer.music.load("song10.mp3")
-                            pygame.mixer.music.play()
-
-
-
+                        try:
+                            if songcnt == 1:
+                                pygame.mixer.music.load("1.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 2:
+                                pygame.mixer.music.load("2.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 3:
+                                pygame.mixer.music.load("3.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 4:
+                                pygame.mixer.music.load("4.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 5:
+                                pygame.mixer.music.load("5.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 6:
+                                pygame.mixer.music.load("6.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 7:
+                                pygame.mixer.music.load("7.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 8:
+                                pygame.mixer.music.load("8.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 9:
+                                pygame.mixer.music.load("9.mp3")
+                                pygame.mixer.music.play(-1)
+                            if songcnt == 10:
+                                pygame.mixer.music.load("10.mp3")
+                                pygame.mixer.music.play(-1)
+                        except Exception as e:
+                            pygame.mixer.music.load("song.mp3")
+                            pygame.mixer.music.play(-1)
             snake_x = snake_x + velocity_x
             snake_y = snake_y + velocity_y
 
             if abs(snake_x - food_x)<6 and abs(snake_y - food_y)<6:
                 score +=10
-                food_x = random.randint(20, screen_width / 2)
-                food_y = random.randint(20, screen_height / 2)
+                food_x = random.randint(20, screen_width - 20)
+                food_y = random.randint(20, screen_height - 20)
                 snk_length +=5
             if int(score) > int(highscore):
                 highscore = score
@@ -352,15 +354,12 @@ def gameloop():
             head.append(snake_x)
             head.append(snake_y)
             snk_list.append(head)
-
             if len(snk_list)>snk_length:
                 del snk_list[0]
-
             if head in snk_list[:-1]:
                 game_over = True
                 pygame.mixer.music.load("start.mp3")
                 pygame.mixer.music.play()
-
             if snake_x<0 or snake_x>screen_width or snake_y<0 or snake_y>screen_height:
                 game_over = True
                 pygame.mixer.music.load("start.mp3")
@@ -372,4 +371,3 @@ def gameloop():
     pygame.quit()
     quit()
 welcome()
-gameloop()
